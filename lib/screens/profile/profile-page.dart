@@ -50,89 +50,94 @@ class ProfilePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
                       width: 1, color: Colors.pink.withOpacity(0.2))),
-              child: Stack(
+              child: ListView(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                              "https://images.pexels.com/photos/162712/egg-white-food-protein-162712.jpeg?auto=compress&cs=tinysrgb&w=600",
-                            ))),
-                  ),
-                  Positioned(
-                      left: 0,
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
+                  Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        height: MediaQuery.of(context).size.height * 0.3,
+                        width: double.infinity,
                         decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20)),
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                  "https://images.pexels.com/photos/162712/egg-white-food-protein-162712.jpeg?auto=compress&cs=tinysrgb&w=600",
+                                ))),
+                      ),
+                      Positioned(
+                        top: MediaQuery.of(context).size.height * 0.3,
+                        child: CircleAvatar(),
+                      ),
+                    ],
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20)),
+                    ),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 5,
                         ),
-                        child: Column(
+                        Center(
+                          child: Text(
+                            "John Doe",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 15),
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Center(
+                          child: Text("johndoe@gmail.com",
+                              textAlign: TextAlign.center,
+                              style:
+                                  TextStyle(color: Colors.grey, fontSize: 14)),
+                        ),
+                        SizedBox(height: 10),
+                        Divider(),
+                        SizedBox(height: 5),
+                        Row(
                           children: [
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Center(
-                              child: Text(
-                                "John Doe",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
+                            Spacer(),
+                            InkWell(
+                              onTap: () => Get.to(() => AddressPage()),
+                              child: Column(
+                                children: [
+                                  Icon(
+                                    Icons.location_on_outlined,
                                     color: Colors.black,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 15),
+                                  ),
+                                  Text("Address")
+                                ],
                               ),
                             ),
-                            SizedBox(height: 10),
-                            Center(
-                              child: Text("johndoe@gmail.com",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 14)),
-                            ),
-                            SizedBox(height: 10),
-                            Divider(),
-                            SizedBox(height: 5),
-                            Row(
+                            Spacer(),
+                            Column(
                               children: [
-                                Spacer(),
-                                InkWell(
-                                  onTap: () => Get.to(() => AddressPage()),
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.location_on_outlined,
-                                        color: Colors.black,
-                                      ),
-                                      Text("Address")
-                                    ],
-                                  ),
+                                Icon(
+                                  Icons.book,
+                                  color: Colors.black,
                                 ),
-                                Spacer(),
-                                Column(
-                                  children: [
-                                    Icon(
-                                      Icons.book,
-                                      color: Colors.black,
-                                    ),
-                                    Text("My Order")
-                                  ],
-                                ),
-                                Spacer(),
+                                Text("My Order")
                               ],
                             ),
-                            SizedBox(
-                              height: 5,
-                            )
+                            Spacer(),
                           ],
                         ),
-                      ))
+                        SizedBox(
+                          height: 5,
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             )
