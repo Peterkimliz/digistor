@@ -14,8 +14,9 @@ class UserController extends GetxController {
   File? image;
   RxString imagePath = RxString("");
   final _picker = ImagePicker();
-  Future<void> getImage() async {
-    final pickedFile = await _picker.getImage(source: ImageSource.camera);
+  Future<void> getImage({required type}) async {
+    final pickedFile = await _picker.getImage(
+        source: type == "camera" ? ImageSource.camera : ImageSource.gallery);
 
     if (pickedFile != null) {
       image = File(pickedFile.path);

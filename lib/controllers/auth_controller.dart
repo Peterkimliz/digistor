@@ -1,3 +1,5 @@
+import 'package:digi_store/controllers/home_controller.dart';
+import 'package:digi_store/controllers/product_controller.dart';
 import 'package:digi_store/controllers/user_controller.dart';
 import 'package:digi_store/screens/home/home_page.dart';
 import 'package:digi_store/services/users.dart';
@@ -32,7 +34,7 @@ class AuthController extends GetxController {
         "password": textEditingControllerPassword.text.trim()
       };
       var response = await Users.loginUser(body: body);
-      print("response is ${ response["user"]["id"]}");
+      print("response is ${response["user"]["id"]}");
       if (response["message"] != null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(SnackBar(content: Text(response["message"])));
@@ -59,5 +61,13 @@ class AuthController extends GetxController {
     if (uid != null) {
       Get.find<UserController>().getUserById(uid);
     }
+  }
+
+  logout() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.clear();
+    currentUser.value = null;
+    Get.find<HomeController>().currentPage.value = 0;
+    Get.find<ProductController>().products.refresh();
   }
 }

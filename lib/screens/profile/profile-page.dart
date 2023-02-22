@@ -1,5 +1,6 @@
 import 'package:digi_store/controllers/auth_controller.dart';
 import 'package:digi_store/screens/products/favourite_page.dart';
+import 'package:digi_store/screens/profile/edit_profile.dart';
 import 'package:digi_store/screens/user/adress/address_page.dart';
 import 'package:digi_store/widgets/big_title.dart';
 import 'package:flutter/material.dart';
@@ -173,7 +174,8 @@ class ProfilePage extends StatelessWidget {
                   profileItems(
                       icon: Icons.person_outlined,
                       title: "Edit Profile",
-                      onpressed: () {}),
+                      onpressed: () => Get.to(() => EditProfile(
+                          user: authController.currentUser.value!))),
                   SizedBox(height: 20),
                   profileItems(
                       icon: Icons.lock_outline,
@@ -191,7 +193,35 @@ class ProfilePage extends StatelessWidget {
                       onpressed: () {}),
                   SizedBox(height: 20),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                          context: context,
+                          builder: (_) {
+                            return AlertDialog(
+                              title: Text("Logout"),
+                              content: Text("You will be logout off the app"),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                    },
+                                    child: Text(
+                                      "Cancel".toUpperCase(),
+                                      style: TextStyle(color: Colors.blue),
+                                    )),
+                                TextButton(
+                                    onPressed: () {
+                                      Get.back();
+                                      authController.logout();
+                                    },
+                                    child: Text(
+                                      "Okay".toUpperCase(),
+                                      style: TextStyle(color: Colors.blue),
+                                    ))
+                              ],
+                            );
+                          });
+                    },
                     child: Row(
                       children: [
                         Icon(
