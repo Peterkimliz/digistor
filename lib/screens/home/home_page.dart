@@ -1,11 +1,13 @@
+import 'package:digi_store/controllers/auth_controller.dart';
 import 'package:digi_store/controllers/home_controller.dart';
+import 'package:digi_store/screens/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
   HomeController homeController = Get.find<HomeController>();
-
+  AuthController authController = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Obx(
@@ -16,7 +18,11 @@ class HomePage extends StatelessWidget {
           selectedItemColor: Colors.green,
           unselectedItemColor: Colors.grey,
           onTap: (value) {
-            homeController.currentPage.value = value;
+            if (value == 3 && authController.currentUser.value == null) {
+              Get.to(() => LoginPage());
+            } else {
+              homeController.currentPage.value = value;
+            }
           },
           items: [
             BottomNavigationBarItem(

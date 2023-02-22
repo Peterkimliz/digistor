@@ -23,6 +23,12 @@ class Products {
     return jsonDecode(response);
   }
 
+  fetchUserfavouriteProduct({required userId}) async {
+    var response = await DbBase()
+        .databaseRequest("$userWishlist/$userId", DbBase().getRequestType);
+    return jsonDecode(response);
+  }
+
   getProductsByCategory({String? categoryId, required int page}) async {
     print("called$categoryId and $page");
     var response = await DbBase().databaseRequest(

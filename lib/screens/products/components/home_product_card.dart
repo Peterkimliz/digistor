@@ -127,7 +127,7 @@ Widget homeProductCard({required Product product}) {
                           : Icons.favorite_border_outlined,
                       color: authController.currentUser.value?.wishlist
                                   ?.indexWhere(
-                                      (element) => element == product.id) !=
+                                      (element) => element == product.id) ==
                               -1
                           ? Colors.white
                           : Colors.pinkAccent,
