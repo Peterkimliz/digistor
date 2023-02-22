@@ -8,9 +8,8 @@ Widget authButton({required Widget widget, required onPressed}) {
         width: 150,
         padding: EdgeInsets.only(left: 10, right: 10, top: 15, bottom: 15),
         decoration: BoxDecoration(
-            color: Colors.lightGreen.withOpacity(0.8),
-            borderRadius: BorderRadius.circular(30)),
-        child:widget,
+            color: Colors.green, borderRadius: BorderRadius.circular(30)),
+        child: widget,
       ),
     ),
   );

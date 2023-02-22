@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 class ProductController extends GetxController {
   RxBool loadingProducts = RxBool(false);
+  RxBool loadingFavProducts = RxBool(false);
   RxBool loadingProductReviews = RxBool(false);
   RxBool loadingProductByCategory = RxBool(false);
   RxBool loadingMoreProductsByCategory = RxBool(false);
@@ -15,6 +16,7 @@ class ProductController extends GetxController {
   late ScrollController controller;
 
   RxList<Product> products = RxList([]);
+  RxList<Product> favProducts = RxList([]);
   RxList<Product> productsByCategory = RxList([]);
   RxList<ProductReview> productReviews = RxList([]);
   RxDouble avarageReviews = RxDouble(0.0);
@@ -23,7 +25,7 @@ class ProductController extends GetxController {
     try {
       loadingProducts.value = true;
       var response = await Products().getPaginatedProducts("0");
-      print(response);
+
       if (response != null) {
         List dataResponse = response;
         List<Product> rawProduct =
@@ -87,6 +89,30 @@ class ProductController extends GetxController {
           productId: product.id, userId: authController.currentUser.value?.id);
       print(response);
     } catch (e) {
+      print("error ${e}");
+    }
+  }
+
+  fetchUserfavouriteProduct() async {
+    try {
+      loadingFavProducts.value = true;
+      AuthController authController = Get.find<AuthController>();
+      var response = await Products().fetchUserfavouriteProduct(
+          userId: authController.currentUser.value?.id);
+
+      if (response != null) {
+        List dataResponse = response;
+        List<Product> rawProduct =
+            dataResponse.map((e) => Product.fromJson(e["product"])).toList();
+        favProducts.assignAll(rawProduct);
+      } else {
+        favProducts.value = [];
+      }
+
+      print("favourite length is ${favProducts.length}");
+      loadingFavProducts.value = false;
+    } catch (e) {
+      loadingFavProducts.value = false;
       print(e);
     }
   }
@@ -94,10 +120,8 @@ class ProductController extends GetxController {
   getProductsByCategory({String? id}) async {
     try {
       loadingProductByCategory.value = true;
-      print("called${id}");
       var response = await Products().getProductsByCategory(
           categoryId: id, page: productsCategorycategoryPageNumber.value);
-      print("called${response}");
       if (response != null) {
         List dataResponse = response;
         List<Product> rawProduct =

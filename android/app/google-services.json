@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "415251305360",
-    "project_id": "digistore-18f80",
-    "storage_bucket": "digistore-18f80.appspot.com"
+    "project_number": "956283350597",
+    "project_id": "digistore-db756",
+    "storage_bucket": "digistore-db756.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:415251305360:android:f1859e1f40736c39205915",
+        "mobilesdk_app_id": "1:956283350597:android:8a86589e21cda7f8767d2c",
         "android_client_info": {
-          "package_name": "com.digistore.com"
+          "package_name": "com.example.digi_store"
         }
       },
       "oauth_client": [
         {
-          "client_id": "415251305360-scs6d0rr4i1csbcbu1urtk5o3iqqavvk.apps.googleusercontent.com",
+          "client_id": "956283350597-bpslq5qvblij64e9fr85gum5nsi5029m.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCGHP2-5oq33_6uReJq-pFCwc-SLmK0Zj8"
+          "current_key": "AIzaSyCxqomge-9_n_Nnct2qZTmuiGkyrxqSz3w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "415251305360-scs6d0rr4i1csbcbu1urtk5o3iqqavvk.apps.googleusercontent.com",
+              "client_id": "956283350597-bpslq5qvblij64e9fr85gum5nsi5029m.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
