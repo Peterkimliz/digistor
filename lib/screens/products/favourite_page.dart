@@ -142,11 +142,29 @@ class FavouritePage extends StatelessWidget {
                                                       color: Colors.green,
                                                     ),
                                                     SizedBox(width: 10),
-                                                    Icon(
-                                                      Icons
-                                                          .delete_forever_outlined,
-                                                      size: 16,
-                                                      color: Colors.red,
+                                                    InkWell(
+                                                      onTap: () {
+                                                        productController
+                                                            .favouriteProduct(
+                                                                product:
+                                                                    product);
+                                                        productController
+                                                            .favProducts
+                                                            .removeWhere(
+                                                                (element) =>
+                                                                    element
+                                                                        .id ==
+                                                                    product.id);
+                                                        productController
+                                                            .favProducts
+                                                            .refresh();
+                                                      },
+                                                      child: Icon(
+                                                        Icons
+                                                            .delete_forever_outlined,
+                                                        size: 16,
+                                                        color: Colors.red,
+                                                      ),
                                                     ),
                                                     SizedBox(width: 10),
                                                   ],

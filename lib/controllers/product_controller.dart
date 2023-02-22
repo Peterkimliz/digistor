@@ -96,20 +96,20 @@ class ProductController extends GetxController {
   fetchUserfavouriteProduct() async {
     try {
       loadingFavProducts.value = true;
-      favProducts.clear();
       AuthController authController = Get.find<AuthController>();
       var response = await Products().fetchUserfavouriteProduct(
           userId: authController.currentUser.value?.id);
 
       if (response != null) {
         List dataResponse = response;
-        print(dataResponse.length);
         List<Product> rawProduct =
-            dataResponse.map((e) => Product.fromJson(e)).toList();
+            dataResponse.map((e) => Product.fromJson(e["product"])).toList();
         favProducts.assignAll(rawProduct);
       } else {
         favProducts.value = [];
       }
+
+      print("favourite length is ${favProducts.length}");
       loadingFavProducts.value = false;
     } catch (e) {
       loadingFavProducts.value = false;

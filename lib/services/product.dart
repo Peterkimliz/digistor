@@ -26,6 +26,7 @@ class Products {
   fetchUserfavouriteProduct({required userId}) async {
     var response = await DbBase()
         .databaseRequest("$userWishlist/$userId", DbBase().getRequestType);
+
     return jsonDecode(response);
   }
 
