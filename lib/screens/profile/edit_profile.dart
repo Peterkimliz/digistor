@@ -206,7 +206,13 @@ class EditProfile extends StatelessWidget {
                           color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    if(authController.textEditingControllerPhone.text==""||authController.textEditingControllerEmail.text==""||authController.textEditingControllerName==""){
+
+                    }else{
+
+                    }
+                  }),
             ],
           ),
         ),

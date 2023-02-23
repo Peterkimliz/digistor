@@ -26,10 +26,11 @@ Widget homeProductCard({required Product product}) {
           child: Stack(
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 100,
-                    width: 120,
+                    height: 150,
+                    width: 150,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
                           topRight: Radius.circular(5),
@@ -56,22 +57,22 @@ Widget homeProductCard({required Product product}) {
                   ),
                   Container(
                     padding:
-                        EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+                        EdgeInsets.only(left: 2, right: 5, top: 5, bottom: 2),
                     color: Colors.white,
-                    width: 120,
+                    width: 150,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         bigTitle(
-                            title: product.name!,
+                            title: "${product.name!}".capitalize,
                             color: Colors.black,
                             size: 13),
                         SizedBox(
                           height: 3,
                         ),
                         smallTitle(
-                            title: "${product.shop!.name} shop",
-                            color: Colors.grey),
+                            title: "Qty: ${product.quantity}",
+                            color: Color.fromARGB(255, 8, 7, 7)),
                         SizedBox(
                           height: 5,
                         ),
@@ -79,24 +80,29 @@ Widget homeProductCard({required Product product}) {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             bigTitle(
-                                title: "200", color: Colors.black, size: 13),
+                                title: "KES: ${product.price}",
+                                color: Colors.black,
+                                size: 13),
                             InkWell(
                               onTap: () {
                                 if (authController.currentUser.value == null) {
                                   Get.to(() => LoginPage());
                                 }
                               },
-                              child: Container(
-                                padding: EdgeInsets.only(
-                                    left: 5, right: 5, top: 3, bottom: 3),
-                                decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(5)),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.shopping_basket_outlined,
-                                    color: Colors.white,
-                                    size: 15,
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                      left: 5, right: 5, top: 3, bottom: 3),
+                                  decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: Center(
+                                    child: Icon(
+                                      Icons.shopping_basket_outlined,
+                                      color: Colors.white,
+                                      size: 15,
+                                    ),
                                   ),
                                 ),
                               ),

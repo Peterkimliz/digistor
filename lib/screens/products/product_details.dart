@@ -194,7 +194,7 @@ class ProductDetails extends StatelessWidget {
                           height: 10,
                         ),
                         Container(
-                          height: 180,
+                          height: 250,
                           width: double.infinity,
                           child: ListView.builder(
                               scrollDirection: Axis.horizontal,
