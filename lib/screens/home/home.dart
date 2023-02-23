@@ -32,6 +32,7 @@ class Home extends StatelessWidget {
           backgroundColor: Colors.white,
           appBar: AppBar(
             elevation: 0.0,
+            titleSpacing: 10,
             backgroundColor: Colors.white,
             title: bigTitle(
                 title: "Digi Store", color: Colors.orangeAccent, size: 20),
@@ -116,7 +117,7 @@ class Home extends StatelessWidget {
                                 height: 10,
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 5, right: 5),
+                                padding: EdgeInsets.only(left: 10, right: 5),
                                 child: bigTitle(
                                     title: "Categories", color: Colors.black),
                               ),
@@ -157,8 +158,8 @@ class Home extends StatelessWidget {
                                                   Container(
                                                     child: CircleAvatar(
                                                       child: SizedBox(
-                                                        width: 60,
-                                                        height: 60,
+                                                        width: 65,
+                                                        height: 65,
                                                         child: ClipOval(
                                                           child:
                                                               CachedNetworkImage(
@@ -195,7 +196,8 @@ class Home extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 5, right: 5),
+                                    padding:
+                                        EdgeInsets.only(left: 10, right: 5),
                                     child: Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -213,7 +215,7 @@ class Home extends StatelessWidget {
                                   ),
                                   SizedBox(height: 10),
                                   Container(
-                                    height: 180,
+                                    height: 250,
                                     width: double.infinity,
                                     child: ListView.builder(
                                         scrollDirection: Axis.horizontal,
@@ -231,7 +233,7 @@ class Home extends StatelessWidget {
                                 ],
                               ),
                               SizedBox(
-                                height: 20,
+                                height: 2,
                               ),
                             ],
                           ),
